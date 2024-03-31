@@ -191,7 +191,7 @@ async function deleteOlderReleases(keepLatest, keepMinDownloadCount, deleteExpir
           const publishedDate = new Date(item.published_at);
           const timeDifference = currentDate - publishedDate;
           const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24)); 
-          return item.download_counts < keepMinDownloadCount || daysDifference > deleteExpiredData;
+          return item.download_counts < keepMinDownloadCount && daysDifference > deleteExpiredData;
         });
       }
       else
